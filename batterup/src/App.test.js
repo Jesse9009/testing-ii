@@ -14,16 +14,17 @@ describe('The Batter Up React App', () => {
   });
 
   describe('the display component', () => {
-    it('displays the correct number of strikes when the "Strike" button is clicked', () => {});
-    it('displays the correct number of balls when the "Ball" button is clicked', () => {});
-    it('resets balls and strikes to 0 if player reaches 3 strikes or 4 balls', () => {});
-    it('resets balls and strikes to 0 if player connects any type of hit(The "hit" button is clicked)', () => {});
+    it('displays the correct number of strikes when the "Strike" button is clicked.', () => {});
+    it('displays the correct number of balls when the "Ball" button is clicked.', () => {});
+    it('increases the stike count when the "Foul" button is pressed if player has 0 or 1 strikes.', () => {});
+    it('resets balls and strikes to 0 if player reaches 3 strikes or 4 balls.', () => {});
+    it('resets balls and strikes to 0 if player connects any type of hit(The "Hit" button is clicked).', () => {});
   });
 
   describe('the dashboard component', () => {
-    it('has a button that for a person to click to increase strike count', () => {});
-    it('has a button that for a person to click to increase ball count', () => {});
-    it('has a button that for a person to click to indicate a foul ball', () => {});
-    it('has a button that for a person to click to indicate a hit', () => {});
+    it('has a button that for a person to click to labelled "Strike".', () => {});
+    it('has a button that for a person to click to labelled "Ball".', () => {});
+    it('has a button that for a person to click to labelled "Foul".', () => {});
+    it('has a button that for a person to click to labelled "Hit".', () => {});
   });
 });
