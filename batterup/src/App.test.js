@@ -1,10 +1,13 @@
 import React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import { render, fireEvent, cleanup } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 
 import App from './App';
-import Disaply from './components/Display/Display';
+import Display from './components/Display/Display';
 import Dashboard from './components/Dashboard/Dashboard';
+
+// automatically unmount and cleanup DOM after the test is finished.
+// beforeEach(cleanup);
 
 describe('The Batter Up React App', () => {
   it('renders without crashing', () => {
@@ -20,6 +23,7 @@ describe('The Batter Up React App', () => {
       const display = render(<Display />);
       const strikesDisplayed = display.getByTestId('strikes');
       expect(strikesDisplayed).toHaveTextContent('1');
+      // cleanup();
     });
     it('displays the correct number of balls when the "Ball" button is clicked.', () => {
       const dashboard = render(<Dashboard />);
@@ -29,6 +33,7 @@ describe('The Batter Up React App', () => {
       const display = render(<Display />);
       const ballsDisplayed = display.getByTestId('balls');
       expect(ballsDisplayed).toHaveTextContent('1');
+      // cleanup();
     });
     it('increases the stike count when the "Foul" button is pressed if player has 0 or 1 strikes.', () => {
       const dashboard = render(<Dashboard />);
@@ -37,9 +42,9 @@ describe('The Batter Up React App', () => {
 
       const display = render(<Display />);
       const strikesDisplayed = display.getByTestId('strikes');
-      expect(strikesDisplayed).toHaveTextContent('1');
+      expect(strikesDisplayed).toHaveTextContent('2');
     });
-    it('increases the stike count when the "Foul" button is pressed if player has 0 or 1 strikes.', () => {
+    it('stays at 2 strikes if there are 2 strikes and the "Foul" button is clicked.', () => {
       const dashboard = render(<Dashboard />);
       const foulBtn = dashboard.getByText(/foul/i);
       fireEvent.click(foulBtn); // 1
@@ -48,7 +53,8 @@ describe('The Batter Up React App', () => {
 
       const display = render(<Display />);
       const strikesDisplayed = display.getByTestId('strikes');
-      expect(strikesDisplayed).toHaveTextContent('1');
+      expect(strikesDisplayed).toHaveTextContent('2');
+      cleanup();
     });
     it('resets balls and strikes to 0 if player reaches 3 strikes.', () => {
       const dashboard = render(<Dashboard />);
@@ -60,6 +66,7 @@ describe('The Batter Up React App', () => {
       const display = render(<Display />);
       const strikesDisplayed = display.getByTestId('strikes');
       expect(strikesDisplayed).toHaveTextContent('0');
+      cleanup();
     });
     it('resets balls and strikes to 0 if player reaches 4 balls.', () => {
       const dashboard = render(<Dashboard />);
@@ -83,6 +90,7 @@ describe('The Batter Up React App', () => {
       const strikesDisplayed = display.getByTestId('strikes');
       expect(ballsDisplayed).toHaveTextContent('0');
       expect(strikesDisplayed).toHaveTextContent('0');
+      cleanup;
     });
   });
 

@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 
 class Dashboard extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+  }
+  render(props) {
     return (
-      <>
-        {/* <div>This is the dashboard</div> */}
-        <button>Strike</button>
-        <button>Ball</button>
-        <button>Foul</button>
-        <button>Hit</button>
-      </>
+      <div data-testid="dashboard">
+        <button onClick={this.props.increaseStrikes}>Strike</button>
+        <button onClick={this.props.increaseBalls}>Ball</button>
+        <button onClick={this.props.foulBall}>Foul</button>
+        <button onClick={this.props.freshAtBat}>Hit</button>
+      </div>
     );
   }
 }
